@@ -8,8 +8,7 @@
 
   args - List of command line arguments
   :redirect - Redirect stderr to stdout
-  :dir - Set initial directory
-  "
+  :dir - Set initial directory"
   (-> (ProcessBuilder. args)
     (.directory (if (nil? dir) nil (io/file dir)))
     (.redirectErrorStream (boolean redirect))
@@ -44,7 +43,6 @@
 
   args - List of command line arguments
   :redirect - Redirect stderr to stdout
-  :dir - Set initial directory
-  "
+  :dir - Set initial directory"
   (stdout (popen args :redirect redirect :dir dir)))
 
