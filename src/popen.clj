@@ -1,7 +1,15 @@
-(ns popen
+(ns ^{:doc "Subprocess library"
+      :author "Miki Tebeka <miki.tebeka@gmail.com>"}
+  popen
   (require [clojure.java.io :as io]))
 
 (defn popen [args &{:keys [redirect dir]}]
+  "Open a sub process, return the subprocess
+
+  args - List of command line arguments
+  :redirect - Redirect stderr to stdout
+  :dir - Set initial directory
+  "
   (-> (ProcessBuilder. args)
     (.directory (if (nil? dir) nil (io/file dir)))
     (.redirectErrorStream (boolean redirect))
@@ -30,4 +38,13 @@
   (exit-code [this] (join this) (exit-code- this))
   (running? [this] (nil? (exit-code- this)))
   (kill [this] (.destroy this)))
+
+(defn popen* [args &{:keys [redirect dir]}]
+  "Open a sub process, return the subprocess stdout
+
+  args - List of command line arguments
+  :redirect - Redirect stderr to stdout
+  :dir - Set initial directory
+  "
+  (stdout (popen args :redirect redirect :dir dir)))
 

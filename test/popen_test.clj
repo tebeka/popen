@@ -30,3 +30,5 @@
     (is (not (running? p)))
     (is (not (zero? (exit-code p))))))
 
+(deftest test-popen*
+  (is (= (line-seq (io/reader (popen* ["echo", "1"]))) '("1"))))
