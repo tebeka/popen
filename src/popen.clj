@@ -27,7 +27,7 @@
   (stdin [this] (io/writer (.getOutputStream this)))
   (stderr [this] (io/reader (.getErrorStream this)))
   (join [this] (.waitFor this))
-  (exit-code [this] (exit-code- this))
+  (exit-code [this] (join this) (exit-code- this))
   (running? [this] (nil? (exit-code- this)))
   (kill [this] (.destroy this)))
 
