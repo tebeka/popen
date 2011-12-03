@@ -27,6 +27,7 @@
   (let [p (popen/popen ["cat"])]
     (is (popen/running? p))
     (popen/kill p)
+    (Thread/sleep 100)
     (is (not (running? p)))
     (is (not (zero? (exit-code p))))))
 

@@ -3,12 +3,13 @@
   popen
   (require [clojure.java.io :as io]))
 
-(defn popen [args &{:keys [redirect dir]}]
+(defn popen
   "Open a sub process, return the subprocess
 
   args - List of command line arguments
   :redirect - Redirect stderr to stdout
   :dir - Set initial directory"
+  [args &{:keys [redirect dir]}]
   (-> (ProcessBuilder. args)
     (.directory (if (nil? dir) nil (io/file dir)))
     (.redirectErrorStream (boolean redirect))
@@ -38,11 +39,12 @@
   (running? [this] (nil? (exit-code- this)))
   (kill [this] (.destroy this)))
 
-(defn popen* [args &{:keys [redirect dir]}]
+(defn popen*
   "Open a sub process, return the subprocess stdout
 
   args - List of command line arguments
   :redirect - Redirect stderr to stdout
   :dir - Set initial directory"
+  [args &{:keys [redirect dir]}]
   (stdout (popen args :redirect redirect :dir dir)))
 
