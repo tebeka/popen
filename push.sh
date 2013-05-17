@@ -3,7 +3,7 @@
 set -x
 
 version=$(egrep -o "[0-9]+\.[0-9]+\.[0-9]+(-SNAPSHOT)?" project.clj  | head -1)
-jar=popen-${version}.jar
+jar=target/popen-${version}.jar
 
 if [ -f $jar ]; then
     rm $jar
