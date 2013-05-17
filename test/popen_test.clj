@@ -31,5 +31,10 @@
     (is (not (running? p)))
     (is (not (zero? (exit-code p))))))
 
+(deftest env-test
+  (let [p (popen/popen ["sh" "-c" "echo -n $FOO"] :env {"FOO" "foo bar"})
+        out (popen/stdout p)]
+    (is (= (line-seq (io/reader out)) '("foo bar")))))
+
 (deftest test-popen*
   (is (= (line-seq (io/reader (popen* ["echo", "1"]))) '("1"))))

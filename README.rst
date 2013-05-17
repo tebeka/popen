@@ -9,12 +9,12 @@ popen is a subprocess library for Clojure.
 Usage
 =====
 
-`(popen ["ls" "-a" "/tmp"] :redirect false :dir nil)`
+`(popen ["ls" "-a" "/tmp"] :redirect false :dir nil :env {})`
     Open a child process. Optional parameters are `redirect` to redirect stderr
-    to stdout and `dir` to start with a different working directory. Returns the
-    process object.
+    to stdout, `dir` to start with a different working directory and `env` to
+    pass additional environment variables as a map. Returns the process object.
 
-`(popen* ["ls" "-a" "/tmp"] :redirect false :dir nil)`
+`(popen* ["ls" "-a" "/tmp"] :redirect false :dir nil :env {})`
     Same as `popen`, returns the process stdout stream.
 
 `(stdout process)`

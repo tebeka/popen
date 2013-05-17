@@ -8,12 +8,16 @@
 
   args - List of command line arguments
   :redirect - Redirect stderr to stdout
-  :dir - Set initial directory"
-  [args &{:keys [redirect dir]}]
-  (-> (ProcessBuilder. args)
-    (.directory (if (nil? dir) nil (io/file dir)))
-    (.redirectErrorStream (boolean redirect))
-    (.start)))
+  :dir - Set initial directory
+  :env - Set environment variables"
+  [args &{:keys [redirect dir env]}]
+  (let [pb (ProcessBuilder. args)
+        environment (.environment pb)]
+    (doseq [[k v] env] (.put environment k v))
+    (-> pb
+      (.directory (if (nil? dir) nil (io/file dir)))
+      (.redirectErrorStream (boolean redirect))
+      (.start))))
 
 (defprotocol Popen
   (stdout [this] "Process standard output (read from)")
