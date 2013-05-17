@@ -5,3 +5,4 @@ README.html
 classes
 lib
 pom.xml
+target/stale/extract-native.dependencies
