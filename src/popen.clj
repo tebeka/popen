@@ -1,7 +1,7 @@
 (ns ^{:doc "Subprocess library"
       :author "Miki Tebeka <miki.tebeka@gmail.com>"}
   popen
-  (require [clojure.java.io :as io]))
+  (:require [clojure.java.io :as io]))
 
 (defn popen
   "Open a sub process, return the subprocess
