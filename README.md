@@ -2,7 +2,7 @@
 
 popen is a subprocess library for Clojure.
 
-# Usage
+## Usage
 
 ```clojure
 (popen ["ls" "-a" "/tmp"] :redirect false :dir nil :env {})
@@ -53,7 +53,7 @@ Return true if process still running.
 Kills (terminates) the process.
     
 
-# License
+## License
 Copyright &copy; 2013 Miki Tebeka <miki.tebeka@gmail.com>
 
 Distributed under the Eclipse Public License, the same as Clojure.
