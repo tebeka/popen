@@ -1,6 +1,5 @@
 # popen
 
-# About
 popen is a subprocess library for Clojure.
 
 # Usage
