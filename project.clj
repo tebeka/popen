@@ -1,4 +1,4 @@
-(defproject popen "0.3.0"
+(defproject popen "0.3.1"
   :description "popen (subprocess) library for Clojure"
-  :url "https://bitbucket.org/tebeka/popen/src"
-  :dependencies [[org.clojure/clojure "1.5.0"]])
+  :url "https://github.com/tebeka/popen/src"
+  :dependencies [[org.clojure/clojure "1.8.0"]])
