@@ -1,8 +1,0 @@
-syntax glob
-
-.lein-failures
-README.html
-classes
-lib
-pom.xml
-target/stale/extract-native.dependencies
